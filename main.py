@@ -11,7 +11,11 @@ def main():
 	print("Screen width: 1280")
 	print("Screen height: 720")
 
-#infinite game loop 
+# time clock object 
+	clock = pygame.time.Clock() # created time clock object 
+	dt = 0 
+
+#game loop start 
 	BLACK = (0, 0, 0) #set color variable to black for while loop
 	while True:
 		# handle events
@@ -20,10 +24,14 @@ def main():
 				return
 
 #fill screen
-	screen.fill(BLACK, rect=None, special_flags=0) 
+		screen.fill(BLACK, rect=None, special_flags=0) 
 
 # Update display 
-	pygame.display.flip()
+		pygame.display.flip()
+
+# time that has passed
+		returned_value = clock.tick(60)
+		dt = returned_value / 1000
 
 if __name__ == "__main__":
     main()
