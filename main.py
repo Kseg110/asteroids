@@ -1,6 +1,7 @@
 # this allows us to use code from the open-source pygame library throughout this file
 import pygame
 from constants import *
+from player import *
 
 def main():
 	pygame.init() #initializing pygame
@@ -13,6 +14,9 @@ def main():
 	clock = pygame.time.Clock() # created time clock object 
 	dt = 0 
 
+# create player instance 
+	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
 #game loop start 
 	BLACK = (0, 0, 0) #set color variable to black for while loop
 	while True:
@@ -23,6 +27,10 @@ def main():
 
 #fill screen
 		screen.fill(BLACK, rect=None, special_flags=0) 
+
+# draw the player here
+		player.draw(screen)
+
 
 # Update display 
 		pygame.display.flip()
