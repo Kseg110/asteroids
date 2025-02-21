@@ -3,13 +3,13 @@ import pygame
 from constants import *
 from player import *
 
+print( "Starting asteroids!")
+print("Screen width: 1280")
+print("Screen height: 720")
+
 def main():
 	pygame.init() #initializing pygame
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #set GUI window/ format size
-	print( "Starting asteroids!")
-	print("Screen width: 1280")
-	print("Screen height: 720")
-
 # time clock object 
 	clock = pygame.time.Clock() # created time clock object 
 	dt = 0 
@@ -25,17 +25,11 @@ def main():
 			if event.type == pygame.QUIT:
 				return
 
-#fill screen
-		screen.fill(BLACK, rect=None, special_flags=0) 
+		screen.fill(BLACK, rect=None, special_flags=0) #fill screen
+		player.draw(screen)# draw the player here
+		pygame.display.flip()# Update display
 
-# draw the player here
-		player.draw(screen)
-
-
-# Update display 
-		pygame.display.flip()
-
-# time that has passed
+# CAPTURE DELTA time that has passed
 		dt = clock.tick(60) / 1000
 
 if __name__ == "__main__":
