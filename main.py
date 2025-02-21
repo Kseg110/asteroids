@@ -28,6 +28,7 @@ def main():
 		screen.fill(BLACK, rect=None, special_flags=0) #fill screen
 		player.draw(screen)# draw the player here
 		pygame.display.flip()# Update display
+		player.update(dt)
 
 # CAPTURE DELTA time that has passed
 		dt = clock.tick(60) / 1000
