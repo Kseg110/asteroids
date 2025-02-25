@@ -2,6 +2,8 @@
 import pygame
 from constants import *
 from player import *
+from asteroids import *
+from asteroidfield import *
 
 print( "Starting asteroids!")
 print("Screen width: 1280")
@@ -10,14 +12,20 @@ print("Screen height: 720")
 def main():
 	pygame.init() #initializing pygame
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #set GUI window/ format size
+ 
 # time clock object 
 	clock = pygame.time.Clock() # created time clock object 
 	dt = 0 
-
+	
 # Creating groupds for updatables & Drawables using pygames groups/containers 
 	updatable = pygame.sprite.Group()
 	drawable = pygame.sprite.Group()
-	Player.containers = (updatable, drawable)
+	asteroids = pygame.sprite.Group()
+	Player.containers = (updatable, drawable) # player container
+	Asteroid.containers = (asteroids, updatable, drawable) # asteroid container
+	AsteroidField.containers = (asteroids, updatable) # asteroids spawner container
+	AsteroidField()
+ 
 # create player instance 
 	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 	
