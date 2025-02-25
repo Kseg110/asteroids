@@ -22,8 +22,8 @@ def main():
 	drawable = pygame.sprite.Group()
 	asteroids = pygame.sprite.Group()
 	Player.containers = (updatable, drawable) # player container
-	Asteroid.containers = (asteroids, updatable, drawable) # asteroid container
-	AsteroidField.containers = (asteroids, updatable) # asteroids spawner container
+	Asteroid.containers = (asteroids, updatable, drawable) # individual asteroid container
+	AsteroidField.containers = (updatable) # asteroids field spawner container
 	AsteroidField()
  
 # create player instance 
@@ -38,11 +38,14 @@ def main():
 				return
 
 		updatable.update(dt) # applied update method to update player object for each frame before rendering
+		for ast in asteroids.sprites():
+			if player.collision_check(ast): #if collision returns true
+				raise SystemExit("Game Over!")
 		screen.fill(BLACK, rect=None, special_flags=0) #fill screen
 		for obj in drawable:
 			obj.draw(screen)# draw the player here
 		pygame.display.flip()# Update display
-		
+
 # CAPTURE DELTA time that has passed
 		dt = clock.tick(60) / 1000
 
