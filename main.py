@@ -42,6 +42,10 @@ def main():
 			if player.collision_check(ast): #if collision returns true
 				print("Game over!")
 				sys.exit()
+
+			for bullet in all_shots:
+				if bullet.collision_check(ast):
+					ast.kill(), bullet.kill()
 			
 		screen.fill(BLACK, rect=None, special_flags=0) #fill screen
 

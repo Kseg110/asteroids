@@ -12,3 +12,5 @@ PLAYER_TURN_SPEED = 300 #player turn speed constsnt
 PLAYER_SPEED = 200 #player movement speed
 PLAYER_SHOT_SPEED = 500
 SHOT_RADIUS = 5
+
+PLAYER_SHOOT_COOLDOWN = 0.3 # seconds
