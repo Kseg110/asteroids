@@ -10,3 +10,5 @@ PLAYER_RADIUS = 20 # Created player radius
 
 PLAYER_TURN_SPEED = 300 #player turn speed constsnt 
 PLAYER_SPEED = 200 #player movement speed
+PLAYER_SHOT_SPEED = 500
+SHOT_RADIUS = 5

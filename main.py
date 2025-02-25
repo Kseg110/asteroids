@@ -6,6 +6,7 @@ from player import *
 from asteroids import *
 from asteroidfield import *
 
+
 def main():
 	pygame.init() #initializing pygame
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #set GUI window/ format size
@@ -17,12 +18,13 @@ def main():
 	updatable = pygame.sprite.Group()
 	drawable = pygame.sprite.Group()
 	asteroids = pygame.sprite.Group()
-
+	all_shots = pygame.sprite.Group()
+	Shot.containers = (all_shots, updatable, drawable)
 	Player.containers = (updatable, drawable) # player container
 	Asteroid.containers = (asteroids, updatable, drawable) # individual asteroid container
 	AsteroidField.containers = (updatable) # asteroids field spawner container
 	AsteroidField()
- 
+
 # create player instance 
 	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 	
