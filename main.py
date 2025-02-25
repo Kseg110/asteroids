@@ -1,18 +1,14 @@
 # this allows us to use code from the open-source pygame library throughout this file
 import pygame
+import sys
 from constants import *
 from player import *
 from asteroids import *
 from asteroidfield import *
 
-print( "Starting asteroids!")
-print("Screen width: 1280")
-print("Screen height: 720")
-
 def main():
 	pygame.init() #initializing pygame
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #set GUI window/ format size
- 
 # time clock object 
 	clock = pygame.time.Clock() # created time clock object 
 	dt = 0 
@@ -21,6 +17,7 @@ def main():
 	updatable = pygame.sprite.Group()
 	drawable = pygame.sprite.Group()
 	asteroids = pygame.sprite.Group()
+
 	Player.containers = (updatable, drawable) # player container
 	Asteroid.containers = (asteroids, updatable, drawable) # individual asteroid container
 	AsteroidField.containers = (updatable) # asteroids field spawner container
@@ -38,10 +35,14 @@ def main():
 				return
 
 		updatable.update(dt) # applied update method to update player object for each frame before rendering
-		for ast in asteroids.sprites():
+		
+		for ast in asteroids:
 			if player.collision_check(ast): #if collision returns true
-				raise SystemExit("Game Over!")
+				print("Game over!")
+				sys.exit()
+			
 		screen.fill(BLACK, rect=None, special_flags=0) #fill screen
+
 		for obj in drawable:
 			obj.draw(screen)# draw the player here
 		pygame.display.flip()# Update display
