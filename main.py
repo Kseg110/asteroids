@@ -43,9 +43,10 @@ def main():
 				print("Game over!")
 				sys.exit()
 
-			for bullet in all_shots:
+			for bullet in all_shots: # setup loop for bullet/ asteroid collision and split logic
 				if bullet.collision_check(ast):
-					ast.kill(), bullet.kill()
+					bullet.kill()
+					ast.split()
 			
 		screen.fill(BLACK, rect=None, special_flags=0) #fill screen
 

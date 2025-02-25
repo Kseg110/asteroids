@@ -14,3 +14,8 @@ PLAYER_SHOT_SPEED = 500
 SHOT_RADIUS = 5
 
 PLAYER_SHOOT_COOLDOWN = 0.3 # seconds
+
+
+# Colors
+WHITE = (250, 250, 250)
+RED = (240, 0, 0)
