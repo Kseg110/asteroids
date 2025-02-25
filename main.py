@@ -14,9 +14,13 @@ def main():
 	clock = pygame.time.Clock() # created time clock object 
 	dt = 0 
 
+# Creating groupds for updatables & Drawables using pygames groups/containers 
+	updatable = pygame.sprite.Group()
+	drawable = pygame.sprite.Group()
+	Player.containers = (updatable, drawable)
 # create player instance 
 	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-
+	
 #game loop start 
 	BLACK = (0, 0, 0) #set color variable to black for while loop
 	while True:
@@ -25,9 +29,10 @@ def main():
 			if event.type == pygame.QUIT:
 				return
 
-		player.update(dt) # applied update method to update player object for each frame before rendering
+		updatable.update(dt) # applied update method to update player object for each frame before rendering
 		screen.fill(BLACK, rect=None, special_flags=0) #fill screen
-		player.draw(screen)# draw the player here
+		for obj in drawable:
+			obj.draw(screen)# draw the player here
 		pygame.display.flip()# Update display
 		
 # CAPTURE DELTA time that has passed
